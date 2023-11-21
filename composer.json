@@ -1,0 +1,30 @@
+{
+  "name": "rightrun/text-captcha",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "Onetrue\\TextCaptcha\\": "src/",
+      "TextCaptchaTest\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "rightrun",
+      "email": "rightrun@163.com",
+      "homepage": "https://github.com/rightrun/text-captcha",
+      "role": "Developer"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=8.0",
+    "guzzlehttp/guzzle": "^7.5.1",
+    "alibabacloud/dysmsapi-20170525": "^2.0.20",
+    "symfony/mailer": "^6.0"
+  },
+  "require-dev": {
+    "phpunit/php-file-iterator": "^3.0.5",
+    "phpunit/phpunit": "9.6.8",
+    "phpunit/php-invoker": "^3.1"
+  }
+}
