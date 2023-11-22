@@ -2,14 +2,14 @@
 
 namespace TextCaptchaTest\Cases;
 
-use A07sky\TextCaptcha\CaptchaCodes;
-use A07sky\TextCaptcha\CaptchaManager;
-use A07sky\TextCaptcha\Provider\Aliyun\AliyunConfig;
-use A07sky\TextCaptcha\Provider\Aliyun\AliyunProvider;
-use A07sky\TextCaptcha\Provider\Aother\AotherConfig;
-use A07sky\TextCaptcha\Provider\Aother\AotherProvider;
-use A07sky\TextCaptcha\Provider\Mailer\MailerConfig;
-use A07sky\TextCaptcha\Provider\Mailer\MailerProvider;
+use Onetrue\TextCaptcha\CaptchaCodes;
+use Onetrue\TextCaptcha\CaptchaManager;
+use Onetrue\TextCaptcha\Provider\Aliyun\AliyunConfig;
+use Onetrue\TextCaptcha\Provider\Aliyun\AliyunProvider;
+use Onetrue\TextCaptcha\Provider\Aother\AotherConfig;
+use Onetrue\TextCaptcha\Provider\Aother\AotherProvider;
+use Onetrue\TextCaptcha\Provider\Mailer\MailerConfig;
+use Onetrue\TextCaptcha\Provider\Mailer\MailerProvider;
 use PHPUnit\Framework\TestCase;
 
 class TextCaptchaTest extends TestCase

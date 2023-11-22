@@ -33,6 +33,9 @@ class AliyunProvider extends Provider
     protected $endpoint = null;
 
 
+    /**
+     * @return AliyunConfig
+     */
     public function getConfig(): AliyunConfig
     {
         return $this->config;

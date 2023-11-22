@@ -22,7 +22,11 @@ abstract class Provider implements ProviderInterface
      * @var  CaptchaConfigInterface
      */
     protected $config;
-    protected $content = '【万战】您的验证码是：${code}，5分钟内有效，请勿泄露。';
+
+    /**
+     * @var string
+     */
+    protected $content = '【标记】您的验证码是：${code}，5分钟内有效，请勿泄露。';
 
     /**
      * 验证码

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 /**
- * This file is part of a07sky/text-captcha
+ * This file is part of rightrun/text-captcha
  *
- * @link     https://github.com/a07sky/text-captcha
+ * @link     https://github.com/rightrun/text-captcha
  * @contact  a07sky@126.com
  * @license  https://github.com/a07sky/text-captcha/blob/master/LICENSE
  *
@@ -18,7 +18,7 @@ use GuzzleHttp\Client;
 
 
 /**
- * 阿里文档： https://next.api.aliyun.com/api-tools/sdk/Dysmsapi?version=2017-05-25&language=php-tea
+ * 未知供应商
  */
 class AotherProvider extends Provider
 {
@@ -29,6 +29,9 @@ class AotherProvider extends Provider
     protected $endpoint = null;
 
 
+    /**
+     * @return AotherConfig
+     */
     public function getConfig(): AotherConfig
     {
         return $this->config;

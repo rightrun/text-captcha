@@ -14,6 +14,10 @@ namespace Onetrue\TextCaptcha\Provider\Aother;
 
 use Onetrue\TextCaptcha\Contracts\CaptchaConfigInterface;
 
+
+/**
+ * 未知供应商
+ */
 class AotherConfig implements CaptchaConfigInterface
 {
     /**

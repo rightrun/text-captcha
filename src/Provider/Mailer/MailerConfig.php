@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 /**
- * This file is part of a07sky/text-captcha
+ * This file is part of rightrun/text-captcha
  *
- * @link     https://github.com/a07sky/text-captcha
+ * @link     https://github.com/rightrun/text-captcha
  * @contact  a07sky@126.com
- * @license  https://github.com/a07sky/text-captcha/blob/master/LICENSE
+ * @license  https://github.com/rightrun/text-captcha/blob/master/LICENSE
  *
  */
 
