@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace Onetrue\TextCaptcha\Provider\Mailer;
 
+use Onetrue\TextCaptcha\Contracts\CaptchaConfigInterface;
 use Onetrue\TextCaptcha\Exception\CaptchaException;
 use Onetrue\TextCaptcha\Provider\Provider;
 use Symfony\Component\Mailer\Mailer;
@@ -28,7 +29,7 @@ class MailerProvider extends Provider
 
     /**
      * 获取配置信息
-     * @return MailerConfig
+     * @return MailerConfig|CaptchaConfigInterface
      */
     public function getConfig(): MailerConfig
     {

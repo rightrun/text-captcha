@@ -13,7 +13,7 @@ namespace Onetrue\TextCaptcha\Provider;
 
 use Onetrue\TextCaptcha\Contracts\CaptchaConfigInterface;
 use Onetrue\TextCaptcha\Contracts\ProviderInterface;
-use Onetrue\TextCaptcha\Exception\CaptchaException;
+use Psr\Http\Message\ResponseInterface;
 
 abstract class Provider implements ProviderInterface
 {
@@ -33,6 +33,12 @@ abstract class Provider implements ProviderInterface
      * @var string
      */
     protected $code = '';
+
+
+    /**
+     * @var ResponseInterface
+     */
+    protected $response = null;
 
     public function __construct(CaptchaConfigInterface $config)
     {
@@ -55,7 +61,7 @@ abstract class Provider implements ProviderInterface
         // TODO: Implement send() method.
         $content = $content ?? $this->content;
         $randomCode = $this->randomCode();
-        $content = str_replace('${code}', $randomCode, $content);
+        $content = str_replace(['${code}', '{code}', '{s}'], $randomCode, $content);
         return $content;
     }
 
@@ -64,5 +70,9 @@ abstract class Provider implements ProviderInterface
         return $this->code;
     }
 
+    public function getResponse(): ResponseInterface
+    {
+        return $this->response;
+    }
 
 }
