@@ -8,6 +8,8 @@ use Onetrue\TextCaptcha\Provider\Aliyun\AliyunConfig;
 use Onetrue\TextCaptcha\Provider\Aliyun\AliyunProvider;
 use Onetrue\TextCaptcha\Provider\Aother\AotherConfig;
 use Onetrue\TextCaptcha\Provider\Aother\AotherProvider;
+use Onetrue\TextCaptcha\Provider\Chuanglan\ChuanglanConfig;
+use Onetrue\TextCaptcha\Provider\Chuanglan\ChuanglanProvider;
 use Onetrue\TextCaptcha\Provider\Mailer\MailerConfig;
 use Onetrue\TextCaptcha\Provider\Mailer\MailerProvider;
 use PHPUnit\Framework\TestCase;
@@ -44,20 +46,29 @@ class TextCaptchaTest extends TestCase
         //$provider->send($phone);
 
         //Aother
-        $config = new AotherConfig('xxxx', 'xxxx');
+        //$config = new AotherConfig('xxxx', 'xxxx');
+        //$captchaManager = new CaptchaManager();
+        //发送短信验证码
+        //$captchaManager->setCaptchaType(CaptchaCodes::SMS_TYPECODE);
+        //$provider = $captchaManager->makeProvider(AotherProvider::class, ['config' => $config]);
+        //$content = '【游戏】您的验证码是：${code}，验证码5分钟内有效，请勿泄露。';
+        //$provider->send('xxx', $content);
+        // $code = $provider->getCode();
+
+
+        //创蓝
+        $config = new ChuanglanConfig('xxx', 'xxx');
         $captchaManager = new CaptchaManager();
         //发送短信验证码
         $captchaManager->setCaptchaType(CaptchaCodes::SMS_TYPECODE);
-        $provider = $captchaManager->makeProvider(AotherProvider::class, ['config' => $config]);
-        $content = '【游戏】您的验证码是：${code}，验证码5分钟内有效，请勿泄露。';
+        $provider = $captchaManager->makeProvider(ChuanglanProvider::class, ['config' => $config]);
+        $content = '【xxx】验证码：{s}，5分钟内有效，注意保密喔。若非本人操作，请忽略。';
         $provider->send('xxx', $content);
         $code = $provider->getCode();
-
+        pr('code => ' . $code);
 
         $this->assertEmpty(true);
     }
-
-
 
 
     public function testEmailCaptcha()

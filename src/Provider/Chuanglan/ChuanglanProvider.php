@@ -10,7 +10,7 @@ declare(strict_types=1);
  */
 
 
-namespace Onetrue\TextCaptcha\Provider\Aother;
+namespace Onetrue\TextCaptcha\Provider\Chuanglan;
 
 use Onetrue\TextCaptcha\Contracts\CaptchaConfigInterface;
 use Onetrue\TextCaptcha\Exception\CaptchaException;
@@ -21,19 +21,13 @@ use GuzzleHttp\Client;
 /**
  * 未知供应商
  */
-class AotherProvider extends Provider
+class ChuanglanProvider extends Provider
 {
 
     /**
-     * @var string
+     * @return ChuanglanConfig|CaptchaConfigInterface
      */
-    protected $endpoint = null;
-
-
-    /**
-     * @return AotherConfig|CaptchaConfigInterface
-     */
-    public function getConfig(): AotherConfig
+    public function getConfig(): ChuanglanConfig
     {
         return $this->config;
     }
@@ -46,19 +40,13 @@ class AotherProvider extends Provider
         $verifyCode = $this->getCode();
         $config = $this->getConfig();
 
-
         try {
-            $callback = '';
-            $orderNumber = date('YmdHis') . uniqid();
-            $string = 'channelCallbackUrl=' . $callback . '&channelOrderId=' . $orderNumber . '&cid=' . $config->getCid() . '&number=[' . $phone . ']&key=' . $config->getSecretKey();
-            $sign = md5($string);
             $requestBody = [
-                'channelOrderId' => $orderNumber,
-                'number' => [$phone],
-                'channelCallbackUrl' => $callback,
-                'cid' => $config->getCid(),
-                'sendText' => $content,
-                'sign' => $sign,
+                'account' => $config->getUsername(),
+                'password' => $config->getPassword(),
+                'msg' => $content,
+                'phone' => $phone,
+                'report' => true,
             ];
 
             $client = new Client([
@@ -67,14 +55,15 @@ class AotherProvider extends Provider
                     'Content-Type' => 'application/json; charset=utf-8',
                 ]
             ]);
-            $requestUrl = 'http://1.14.234.197:9092/SMS/signText/SMS/';
+
+            $requestUrl = 'https://smssh1.253.com/msg/v1/send/json';
             $response = $client->post($requestUrl, ['json' => $requestBody]);
             $this->response = $response;
             $statusCode = $response->getStatusCode();
             if ($statusCode == 200) {
                 $respBody = $response->getBody()->getContents();
                 $json = json_decode($respBody, true);
-                if ($json['code'] != 200) {
+                if ($json['code'] !== '0') {
                     throw new \Exception($json['message'] . '-' . $json['order_id']);
                 }
             } else {
@@ -83,7 +72,6 @@ class AotherProvider extends Provider
         } catch (\Exception $exception) {
             throw  new \Exception($exception->getMessage());
         }
-
         return true;
     }
 

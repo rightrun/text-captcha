@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace Onetrue\TextCaptcha\Provider\Aliyun;
 
+use Onetrue\TextCaptcha\Contracts\CaptchaConfigInterface;
 use Onetrue\TextCaptcha\Exception\CaptchaException;
 use Onetrue\TextCaptcha\Provider\Provider;
 
@@ -34,7 +35,7 @@ class AliyunProvider extends Provider
 
 
     /**
-     * @return AliyunConfig
+     * @return AliyunConfig|CaptchaConfigInterface
      */
     public function getConfig(): AliyunConfig
     {

@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace Onetrue\TextCaptcha\Contracts;
 
+use Psr\Http\Message\ResponseInterface;
+
 interface ProviderInterface
 {
 
@@ -25,4 +27,6 @@ interface ProviderInterface
     public function send(string $phone, string $content = ''): bool;
 
     public function getCode(): string;
+
+    public function getResponse(): ResponseInterface;
 }
