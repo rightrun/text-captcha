@@ -63,8 +63,10 @@ class ChuanglanProvider extends Provider
             if ($statusCode == 200) {
                 $respBody = $response->getBody()->getContents();
                 $json = json_decode($respBody, true);
+
+                // //{"code":"117","msgId":"","time":"20240901161623","errorMsg":"客户端IP错误"}
                 if ($json['code'] !== '0') {
-                    throw new \Exception($json['message'] . '-' . $json['order_id']);
+                    throw new \Exception($json['message'] ?? $json['errorMsg']);
                 }
             } else {
                 throw  new \Exception('渠道网络异常！');
